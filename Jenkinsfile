@@ -4,6 +4,11 @@ pipeline {
       jdk 'jdk17'
   }
   stages {
+   stage('JAVA') {
+      steps {
+        sh 'java -version'
+      }
+    }
     stage('Checkout') {
         checkout scm
     }
