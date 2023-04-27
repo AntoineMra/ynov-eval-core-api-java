@@ -9,9 +9,6 @@ pipeline {
         sh 'java -version'
       }
     }
-    stage('Checkout') {
-        checkout scm
-    }
     stage('Compilation') {
       steps {
         sh 'chmod +x gradlew'
