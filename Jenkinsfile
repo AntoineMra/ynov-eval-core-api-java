@@ -13,18 +13,18 @@ pipeline {
     //       }
     //   }
     // }
-    // stage('Run Spotless') {
-    //   steps {
-    //       script {
-    //           // Run Spotless
-    //           sh './gradlew spotlessApply'
-    //       }
-    //   }
-    // }
     stage('Compilation') {
       steps {
         sh 'chmod +x gradlew'
         sh './gradlew clean build'
+      }
+    }
+    stage('Run Spotless') {
+      steps {
+          script {
+              // Run Spotless
+              sh './gradlew spotlessApply'
+          }
       }
     }
   }
