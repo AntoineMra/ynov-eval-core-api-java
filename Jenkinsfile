@@ -4,6 +4,9 @@ pipeline {
       jdk 'jdk17'
   }
   stages {
+    stage('Checkout') {
+        checkout scm
+    }
     stage('Compilation') {
       steps {
         sh 'chmod +x gradlew'
