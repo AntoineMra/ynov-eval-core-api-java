@@ -8,6 +8,14 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.13.RELEASE'
     id 'name.remal.check-updates' version '1.5.0'
     id "de.undercouch.download" version "4.1.2"
+    id "com.diffplug.spotless" version "5.15.0"
+}
+
+spotless {
+    java {
+        // Apply Google's Java code style
+        googleJavaFormat()
+    }
 }
 
 group 'fr.ynov.eval'
@@ -31,3 +39,15 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+tasks.named('spotlessJava').configure {
+    dependsOn('spotlessGroovyGradle')
+}
+tasks.named('spotlessJava').configure {
+    dependsOn('processRessources')
+}
+tasks.named('spotlessJava').configure {
+    dependsOn('compileJava')
+}
+
+
+apply plugin: 'com.diffplug.gradle.spotless'
