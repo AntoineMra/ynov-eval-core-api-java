@@ -18,6 +18,9 @@ spotless {
     }
 }
 
+apply plugin: 'com.diffplug.gradle.spotless'
+
+
 group 'fr.ynov.eval'
 if (!version) {
     version '0.0.1'
@@ -39,15 +42,9 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
-tasks.named('spotlessJava').configure {
-    dependsOn('spotlessGroovyGradle')
-}
+
 tasks.named('spotlessJava').configure {
     dependsOn('processRessources')
-}
-tasks.named('spotlessJava').configure {
     dependsOn('compileJava')
+    dependsOn('spotlessGroovyGradle')
 }
-
-
-apply plugin: 'com.diffplug.gradle.spotless'
